@@ -1,8 +1,12 @@
 import React from 'react'
 import {useEffect} from 'react';
 import {useParams, Link} from 'react-router-dom';
+import { useContext } from 'react';
+import DataContext from './context/DataContext';
 
-export default function EditPost({posts, handleEdit, editBody, setEditBody, editTitle, setEditTitle}) {
+export default function EditPost() {
+
+    const {posts, handleEdit, editBody, setEditBody, editTitle, setEditTitle} = useContext(DataContext);
 
     const {id} = useParams();
 
