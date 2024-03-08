@@ -2,7 +2,6 @@ import {createContext, useState, useEffect} from 'react';
 import { useHistory } from "react-router-dom";
 import { format } from "date-fns";
 import api from "../api/posts";
-import useWindowSize from "../hooks/useWindowSize";
 import useAxiosFetch from "../hooks/useAxiosFetch";
 
 const DataContext = createContext({});
@@ -24,9 +23,7 @@ export const DataProvider = ({children}) => {
     const [editBody, setEditBody] = useState("");
   
     const history = useHistory();
-  
-    const { width } = useWindowSize();
-  
+
     const { data, fetchError, isLoading } = useAxiosFetch(
       "http://localhost:3500/posts"
     );
@@ -91,7 +88,7 @@ export const DataProvider = ({children}) => {
 
     return (
         <DataContext.Provider value={{
-            width, search, setSearch, searchResults, fetchError, isLoading, handleSubmit, postTitle, setPostTitle, postBody, setPostBody, posts, handleEdit, editBody, setEditBody, editTitle, setEditTitle,handleDelete
+            search, setSearch, searchResults, fetchError, isLoading, handleSubmit, postTitle, setPostTitle, postBody, setPostBody, posts, handleEdit, editBody, setEditBody, editTitle, setEditTitle,handleDelete
         }}>
             {children}
         </DataContext.Provider>
